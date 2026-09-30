@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "2FA Authenticator",
+  "version": "1.2.0",
+  "description": "Authenticator TOTP lokal + enkripsi AES-GCM. 100% offline, tanpa server.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "2FA Authenticator"
+  },
+  "permissions": ["storage", "activeTab"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
+}

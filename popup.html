@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2FA Authenticator</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- ===== LOCK / SETUP ===== -->
+    <section id="screen-lock">
+      <h1>🔐 2FA Authenticator</h1>
+      <p id="lockDesc" class="muted">Masukkan master password untuk membuka vault.</p>
+      <label>Master password
+        <input type="password" id="masterPass" autocomplete="current-password" placeholder="••••••••" />
+      </label>
+      <label id="masterPass2Wrap" hidden>Konfirmasi password
+        <input type="password" id="masterPass2" autocomplete="new-password" placeholder="••••••••" />
+      </label>
+      <p id="lockError" class="error"></p>
+      <button id="btnUnlock">Buka</button>
+      <button id="btnWipe" class="link danger" hidden>Lupa password? Hapus vault & mulai baru</button>
+      <p class="footnote">Vault dienkripsi AES-GCM 256 (PBKDF2 120rb iterasi). 100% lokal.</p>
+    </section>
+
+    <!-- ===== MAIN ===== -->
+    <section id="screen-main" hidden>
+      <header>
+        <h1>🔐 2FA</h1>
+        <div class="hbtns">
+          <button id="btnLock" class="icon" title="Kunci">🔒</button>
+        </div>
+      </header>
+
+      <input id="searchInput" type="search" placeholder="Cari akun…" />
+
+      <div id="accountList"></div>
+      <p id="emptyState" class="muted" hidden>Belum ada akun. Tambahkan di bawah.</p>
+
+      <button id="btnShowAdd" class="secondary">＋ Tambah akun</button>
+
+      <div id="addForm" hidden>
+        <label>Tempel otpauth:// URI (opsional, dari QR)
+          <input id="fUri" placeholder="otpauth://totp/..." spellcheck="false" />
+        </label>
+        <div class="grid2">
+          <label>Issuer
+            <input id="fIssuer" placeholder="GitHub" />
+          </label>
+          <label>Akun
+            <input id="fAccount" placeholder="nama@email.com" />
+          </label>
+        </div>
+        <label>Secret (base32)
+          <input id="fSecret" placeholder="JBSW Y3DP ..." spellcheck="false" autocomplete="off" />
+        </label>
+        <div class="grid2">
+          <label>Digit
+            <select id="fDigits"><option value="6">6</option><option value="8">8</option></select>
+          </label>
+          <label>Periode (detik)
+            <select id="fPeriod"><option value="30">30</option><option value="60">60</option></select>
+          </label>
+        </div>
+        <label>…atau scan QR
+          <input id="qrFile" type="file" accept="image/*" />
+        </label>
+        <div class="row">
+          <button id="btnTabScan" type="button" class="secondary small">🖥️ Scan QR di layar</button>
+        </div>
+        <canvas id="camCanvas" hidden></canvas>
+        <p id="camStatus" class="muted"></p>
+        <p id="addError" class="error"></p>
+        <div class="row">
+          <button id="btnAdd">Simpan</button>
+          <button id="btnCancelAdd" class="secondary">Batal</button>
+        </div>
+      </div>
+
+      <footer>
+        <div class="row wrap">
+          <button id="btnExport" class="secondary small">Export</button>
+          <button id="btnImport" class="secondary small">Import</button>
+          <input id="importFile" type="file" accept="application/json" hidden />
+          <button id="btnChangePw" class="secondary small">Ganti password</button>
+        </div>
+        <label class="row small">Auto-kunci
+          <select id="autolockSel">
+            <option value="1">1 mnt</option>
+            <option value="5">5 mnt</option>
+            <option value="10" selected>10 mnt</option>
+            <option value="30">30 mnt</option>
+            <option value="0">Saat browser ditutup</option>
+          </select>
+        </label>
+        <p id="toast" class="toast" hidden></p>
+      </footer>
+    </section>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

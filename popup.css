@@ -1,0 +1,36 @@
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { margin: 0; width: 360px; font: 14px/1.45 system-ui, sans-serif; }
+.app { padding: 14px; }
+h1 { font-size: 17px; margin: 0; }
+.muted { color: #888; font-size: 12.5px; }
+.error { color: #e5484d; font-size: 12.5px; min-height: 18px; }
+.footnote { font-size: 11px; color: #888; }
+label { display: block; margin: 8px 0; font-size: 12.5px; }
+input, select { width: 100%; padding: 7px 9px; margin-top: 3px; border: 1px solid #5553; border-radius: 8px; font-size: 13.5px; }
+button { width: 100%; padding: 9px; border: 0; border-radius: 9px; background: #4361ee; color: #fff; font-weight: 600; cursor: pointer; margin-top: 8px; }
+button.secondary { background: #8883; color: inherit; }
+button.small { width: auto; padding: 6px 10px; font-size: 12px; }
+button.icon { width: auto; padding: 6px 10px; background: #8883; }
+button.link { background: none; color: #4361ee; font-weight: 400; }
+button.danger { color: #e5484d; }
+button:disabled { opacity: .55; cursor: default; }
+header { display: flex; justify-content: space-between; align-items: center; }
+.row { display: flex; gap: 8px; }
+.row.wrap { flex-wrap: wrap; }
+.row.small, label.row.small { font-size: 12px; align-items: center; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#accountList { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.acct { border: 1px solid #8884; border-radius: 10px; padding: 9px 10px; cursor: pointer; }
+.acct:hover { border-color: #4361ee; }
+.acct .top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.acct .name { font-weight: 600; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.acct .timer { font-size: 11px; color: #888; font-variant-numeric: tabular-nums; }
+.acct .code { font-size: 24px; letter-spacing: 2px; font-variant-numeric: tabular-nums; font-weight: 700; }
+.acct .bar { height: 3px; border-radius: 2px; background: #8883; margin-top: 6px; overflow: hidden; }
+.acct .bar > i { display: block; height: 100%; background: #4361ee; }
+.acct.low .bar > i { background: #e5484d; }
+.acct .del { float: right; background: none; border: 0; color: #e5484d; cursor: pointer; font-size: 13px; width: auto; padding: 0 4px; margin: 0; }
+#camStatus { min-height: 16px; }
+.toast { background: #2a9d48; color: #fff; border-radius: 8px; padding: 6px 10px; font-size: 12px; }
+footer { margin-top: 10px; border-top: 1px solid #8883; padding-top: 8px; }
